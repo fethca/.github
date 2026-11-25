@@ -1,0 +1,36 @@
+name: Feature
+description: Something new the app should do
+labels: [enhancement]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should a user be able to do, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: behaviour
+    attributes:
+      label: Expected behaviour
+      description: How it should work, with examples (inputs, outputs, screens).
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: Checks that tell us it works. These become the tests.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: input
+    id: repos
+    attributes:
+      label: Repos likely involved
+      placeholder: movie-api, oklezzgo
+  - type: textarea
+    id: notes
+    attributes:
+      label: Constraints or notes
+      description: Out of scope, data sources, performance, links.

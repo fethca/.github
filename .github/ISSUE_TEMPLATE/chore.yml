@@ -1,0 +1,19 @@
+name: Chore
+description: Maintenance, refactor, dependencies, tooling
+labels: [chore]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What to change and why
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      placeholder: "- [ ] ..."
+  - type: input
+    id: repos
+    attributes:
+      label: Repos involved
