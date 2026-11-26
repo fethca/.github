@@ -47,6 +47,6 @@ jobs:
             exec 9>/tmp/deploy.lock
             flock 9
             cd ~/traefik
-            docker-compose config --services | grep "^$APP" | xargs -r docker-compose pull
-            docker-compose config --services | grep "^$APP" | xargs -r docker-compose up -d --remove-orphans
+            docker compose config --services | grep "^$APP" | xargs -r docker compose pull
+            docker compose config --services | grep "^$APP" | xargs -r docker compose up -d --remove-orphans
             docker image prune -f
