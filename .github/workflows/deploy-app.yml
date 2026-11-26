@@ -43,11 +43,9 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           envs: APP
           script: |
-            containers=$(docker ps -a -q --filter "name=$APP")
-            if [ -n "$containers" ]; then docker stop $containers && docker rm $containers; fi
-            if [ "$(docker images -q fethca/$APP)" ]; then docker rmi fethca/$APP; fi
-
+            set -e
             cd ~/traefik
-            for service in $(docker-compose config --services); do
-              if [[ $service == $APP* ]]; then docker-compose up --remove-orphans -d $service; fi
-            done
+            services=$(docker-compose config --services | grep "^$APP")
+            docker-compose pull $services
+            docker-compose up -d --remove-orphans $services
+            docker image prune -f
