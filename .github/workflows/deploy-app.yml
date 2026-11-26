@@ -45,7 +45,6 @@ jobs:
           script: |
             set -e
             cd ~/traefik
-            services=$(docker-compose config --services | grep "^$APP")
-            docker-compose pull $services
-            docker-compose up -d --remove-orphans $services
+            docker-compose config --services | grep "^$APP" | xargs -r docker-compose pull
+            docker-compose config --services | grep "^$APP" | xargs -r docker-compose up -d --remove-orphans
             docker image prune -f
